@@ -60,15 +60,7 @@ public class TransGajiBersihDaoImpl implements TransGajiBersihDao {
 		}
 	}
 
-	/**
-	 * Not implemented
-	 */
-	public TransGajiBersih find(Integer id) {
-		return null;
-	}
-
-	public TransGajiBersih findTransGajiBersih(Integer tahun, Integer bulan,
-			String nip) {
+	public TransGajiBersih find(Integer tahun, Integer bulan, String nip) {
 		String sql = "select * from t_gaji_bersih where tahun = ? and bulan = ? and peg_nip = ?";
 		TransGajiBersih tgb = null;
 		try {
@@ -90,13 +82,6 @@ public class TransGajiBersihDaoImpl implements TransGajiBersihDao {
 			e.printStackTrace();
 		}
 		return tgb;
-	}
-
-	/**
-	 * Not implemented
-	 */
-	public void delete(Integer id) {
-		// TODO Auto-generated method stub
 	}
 
 }

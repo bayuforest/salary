@@ -97,16 +97,9 @@ public class PegawaiDaoImpl implements PegawaiDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}	
 
-	/**
-	 * not implemented
-	 */
-	public Pegawai find(Integer id) {		
-		return null;
-	}
-
-	public Pegawai findPegawai(String id) {
+	public Pegawai find(String nip) {
 		String sql = "select T1.*, t2.gol_nm, T2.gol_pkt from "
 				+ "(select * from m_pegawai where peg_nip = '198609042015031002') T1 "
 				+ "join " + "(select * from m_gol) T2 "
@@ -115,11 +108,11 @@ public class PegawaiDaoImpl implements PegawaiDao {
 		try {
 			Connection conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, id);
+			ps.setString(1, nip);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				pegawai = new Pegawai();
-				pegawai.setNip(id);
+				pegawai.setNip(nip);
 				pegawai.setGelarDepan(rs.getString("peg_gelar_depan"));
 				pegawai.setNama(rs.getString("peg_nama"));
 				pegawai.setGelarBelakang(rs.getString("peg_gelar_belakang"));
@@ -140,13 +133,7 @@ public class PegawaiDaoImpl implements PegawaiDao {
 		return pegawai;
 	}
 
-	/**
-	 * not implemented
-	 */
-	public void delete(Integer id) {		
-	}
-
-	public void deletePegawai(String nip) {
+	public void delete(String nip) {
 		String sql = "update m_pegawai set peg_active = false where peg_nip = ?";
 		try {
 			Connection conn = dataSource.getConnection();

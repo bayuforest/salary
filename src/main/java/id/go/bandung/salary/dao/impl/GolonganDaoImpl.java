@@ -17,11 +17,11 @@ import id.go.bandung.salary.model.Golongan;
 
 @Repository
 public class GolonganDaoImpl implements GolonganDao {
-	
+
 	@Autowired
 	DataSource dataSource;
 
-	public List<Golongan> getAll() {		
+	public List<Golongan> getAll() {
 		String sql = "select gol_id, gol_nm, gol_pkt from m_gol order by gol_id";
 		List<Golongan> result = new ArrayList<Golongan>();
 		try {
@@ -29,7 +29,7 @@ public class GolonganDaoImpl implements GolonganDao {
 			Statement st = conn.createStatement();
 			ResultSet rs = st.executeQuery(sql);
 			Golongan golongan = null;
-			while (rs.next()){
+			while (rs.next()) {
 				golongan = new Golongan();
 				golongan.setGolId(rs.getInt("gol_id"));
 				golongan.setGolName(rs.getString("gol_nm"));
@@ -42,15 +42,20 @@ public class GolonganDaoImpl implements GolonganDao {
 		return result;
 	}
 
+	/**
+	 * Not implemented
+	 */
 	public void add(Golongan t) {
-		// not implemented		
 	}
 
+	/**
+	 * Not implemented
+	 */
 	public void edit(Golongan t) {
-		// not implemented		
+		// not implemented
 	}
 
-	public Golongan find(Integer id) {		
+	public Golongan find(Integer id) {
 		String sql = "select gol_id, gol_nm, gol_pkt from m_gol where gol_id = ?";
 		Golongan golongan = null;
 		try {
@@ -58,7 +63,7 @@ public class GolonganDaoImpl implements GolonganDao {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
-			if (rs.next()){
+			if (rs.next()) {
 				golongan = new Golongan();
 				golongan.setGolId(rs.getInt("gol_id"));
 				golongan.setGolName(rs.getString("gol_nm"));

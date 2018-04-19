@@ -60,14 +60,8 @@ public class TransPotonganDaoImpl implements TransPotonganDao {
 		}
 	}
 
-	/**
-	 * Not implemented
-	 */
-	public TransPotongan find(Integer id) {
-		return null;
-	}
-	
-	public TransPotongan findTransPotongan(Integer tahun, Integer bulan, String nip, Potongan potongan){
+	public TransPotongan findTransPotongan(Integer tahun, Integer bulan,
+			String nip, Potongan potongan) {
 		String sql = "select * from t_potongan where thn = ?, bln = ?, nip = ? and pot_id = ?";
 		TransPotongan tp = null;
 		try {
@@ -78,7 +72,7 @@ public class TransPotonganDaoImpl implements TransPotonganDao {
 			ps.setString(3, nip);
 			ps.setInt(4, potongan.getPotId());
 			ResultSet rs = ps.executeQuery();
-			if (rs.next()){
+			if (rs.next()) {
 				tp = new TransPotongan();
 				tp.setTahun(tahun);
 				tp.setBulan(bulan);
@@ -90,13 +84,6 @@ public class TransPotonganDaoImpl implements TransPotonganDao {
 			e.printStackTrace();
 		}
 		return tp;
-	}
-
-	/**
-	 * Not implemented
-	 */
-	public void delete(Integer id) {
-		// TODO Auto-generated method stub
 	}
 
 }

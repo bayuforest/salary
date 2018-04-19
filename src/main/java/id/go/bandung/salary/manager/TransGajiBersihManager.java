@@ -1,10 +1,10 @@
-package id.go.bandung.salary.dao;
-
-import java.util.List;
+package id.go.bandung.salary.manager;
 
 import id.go.bandung.salary.model.TransGajiBersih;
 
-public interface TransGajiBersihDao {
+import java.util.List;
+
+public interface TransGajiBersihManager {
 	public List<TransGajiBersih> getAll();
 
 	public void add(TransGajiBersih t);
